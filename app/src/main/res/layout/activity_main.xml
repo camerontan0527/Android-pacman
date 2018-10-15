@@ -20,5 +20,16 @@
         android:layout_alignParentTop="true"
         app:srcCompat="@android:drawable/screen_background_dark_transparent" />
 
+    <ImageButton
+        android:id="@+id/start"
+        android:layout_width="139dp"
+        android:layout_height="65dp"
+        android:onClick="StartGame"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="217dp"
+        android:layout_marginEnd="106dp"
+        app:srcCompat="@drawable/startbutton1" />
+
 
 </RelativeLayout>
