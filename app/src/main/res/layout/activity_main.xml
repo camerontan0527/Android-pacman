@@ -12,13 +12,31 @@
     >
 
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="232dp"
-        android:layout_height="60dp"
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="236dp"
+        app:srcCompat="@android:drawable/screen_background_dark_transparent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="185dp"
+        app:srcCompat="@android:drawable/screen_background_dark_transparent" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="79dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="185dp"
-        android:layout_marginEnd="55dp"
-        app:srcCompat="@drawable/startbutton" />
+        android:layout_marginBottom="146dp"
+        android:layout_marginEnd="135dp"
+        app:srcCompat="@android:drawable/screen_background_dark_transparent" />
 </RelativeLayout>
