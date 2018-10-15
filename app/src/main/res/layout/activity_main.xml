@@ -13,38 +13,12 @@
 
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="119dp"
-        android:layout_height="34dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="169dp"
-        app:srcCompat="@android:drawable/screen_background_dark_transparent" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="120dp"
-        android:layout_height="34dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="128dp"
-        app:srcCompat="@android:drawable/screen_background_dark_transparent" />
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="119dp"
-        android:layout_height="34dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="222dp"
-        app:srcCompat="@android:drawable/screen_background_dark_transparent" />
-
-    <ImageView
         android:id="@+id/imageView8"
         android:layout_width="47dp"
         android:layout_height="37dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         app:srcCompat="@android:drawable/screen_background_dark_transparent" />
+
 
 </RelativeLayout>
