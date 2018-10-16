@@ -22,7 +22,7 @@
 
     <ImageView
         android:id="@+id/start"
-        android:onClick="About"
+        android:onClick="StartGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -32,6 +32,7 @@
 
     <ImageView
         android:id="@+id/level"
+        android:onClick="Level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
