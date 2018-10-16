@@ -6,14 +6,14 @@ import android.os.Bundle;
 
 public class AboutAcitivity extends AppCompatActivity {
 
-    private static MediaPlayer mediaPlayer;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_acitivity);
-        mediaPlayer=MediaPlayer.create(this,R.raw.pacmanmusic);
-        mediaPlayer.setVolume(100,100);
-        mediaPlayer.setLooping(true);
-        mediaPlayer.start();
+         MainActivity.getPlayer().start();
     }
+
+
 }

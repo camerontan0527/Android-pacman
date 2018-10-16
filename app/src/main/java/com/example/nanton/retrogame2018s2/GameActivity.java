@@ -4,15 +4,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class GameActivity extends AppCompatActivity {
-    private Drawing drawingView;
+    private DrawingView drawingView;
     static GameActivity activity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        drawingView = new Drawing(this);
+        drawingView = new DrawingView(this);
         setContentView(drawingView);
         activity=this;
 
     }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        drawingView.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        drawingView.resume();
+    }
+
 }

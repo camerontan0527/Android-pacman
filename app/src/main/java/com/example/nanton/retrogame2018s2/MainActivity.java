@@ -38,5 +38,6 @@ public class MainActivity extends AppCompatActivity {
     public static MediaPlayer getPlayer(){
         return mediaPlayer;
     }
+
     }
 
