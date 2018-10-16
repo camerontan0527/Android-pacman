@@ -7,13 +7,16 @@ import android.os.Bundle;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
-    private MediaPlayer mediaPlayer=new MediaPlayer();
+    private static MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        mediaPlayer=MediaPlayer.create(this,R.raw.pacmanmusic);
+        mediaPlayer.setVolume(100,100);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.start();
     }
 
     /* The method to start the game */
@@ -31,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
     public void About(View view){
         Intent about = new Intent(this, AboutAcitivity.class);
         startActivity(about);
+    }
+    public static MediaPlayer getPlayer(){
+        return mediaPlayer;
     }
     }
 
