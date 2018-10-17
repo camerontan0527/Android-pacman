@@ -1,6 +1,8 @@
 package com.example.nanton.retrogame2018s2;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -17,6 +19,9 @@ public class DrawingView extends SurfaceView implements Runnable, SurfaceHolder.
     private int screenWidth;                // Width of the phone screen
     private int blockSize;                  // Size of a block on the map
     final Handler handler=new Handler();
+    Bitmap pacman;
+    float pacPosX = 0.0f;
+    float pacPoxY = 165.0f;
 
     public DrawingView(Context context) {
         super(context);
@@ -26,6 +31,8 @@ public class DrawingView extends SurfaceView implements Runnable, SurfaceHolder.
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         screenWidth = metrics.widthPixels;
         blockSize = screenWidth/13;
+        pacman = BitmapFactory.decodeResource(getResources(), R.drawable.pacman);
+        pacman = Bitmap.createScaledBitmap(pacman, 75, 75, false);
 
 
     }
@@ -77,6 +84,7 @@ public class DrawingView extends SurfaceView implements Runnable, SurfaceHolder.
                             x, y + blockSize, x + blockSize + 1, y + blockSize , paint);
             }
         }
+        canvas.drawBitmap(pacman, pacPosX, pacPoxY, paint);
 
     }
 
