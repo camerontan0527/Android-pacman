@@ -79,6 +79,7 @@ public class DrawingView extends SurfaceView implements Runnable, SurfaceHolder.
         }
 
     }
+    
 
     public void pause() {
         Draw = false;
