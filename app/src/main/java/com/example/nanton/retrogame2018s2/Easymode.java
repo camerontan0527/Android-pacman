@@ -3,18 +3,17 @@ package com.example.nanton.retrogame2018s2;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class GameActivity extends AppCompatActivity {
+public class Easymode extends AppCompatActivity {
     private DrawingView drawingView;
-    static GameActivity activity;
+    static Easymode activity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
+        setContentView(R.layout.activity_easymode);
         drawingView = new DrawingView(this);
+        drawingView.getMap(2);
         setContentView(drawingView);
-        drawingView.getMap(1);
         activity=this;
-
     }
     @Override
     protected void onPause() {
@@ -27,5 +26,4 @@ public class GameActivity extends AppCompatActivity {
         super.onResume();
         drawingView.resume();
     }
-
 }

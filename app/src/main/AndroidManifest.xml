@@ -18,7 +18,9 @@
         </activity>
         <activity android:name=".GameActivity" />
         <activity android:name=".LevelActivity" />
-        <activity android:name=".AboutAcitivity"></activity>
+        <activity android:name=".AboutAcitivity" />
+        <activity android:name=".Easymode" />
+        <activity android:name=".Hardmode"></activity>
     </application>
 
 </manifest>

@@ -10,6 +10,7 @@
 
     <ImageButton
         android:id="@+id/imageButton5"
+        android:onClick="EasyMode"
         android:layout_width="144dp"
         android:layout_height="31dp"
         android:layout_marginBottom="8dp"
@@ -23,6 +24,7 @@
 
     <ImageButton
         android:id="@+id/imageButton6"
+        android:onClick="HardMode"
         android:layout_width="143dp"
         android:layout_height="31dp"
         android:layout_marginBottom="200dp"
