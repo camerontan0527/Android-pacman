@@ -14,9 +14,9 @@ public class DrawingView extends SurfaceView implements Runnable, SurfaceHolder.
     private SurfaceHolder holder;
     private boolean Draw = true;
     private Paint paint;
-    private int screenWidth;                // Width of the phone screen
+    private int screenWidth;                // Width of the screen
     private int blockSize;                  // Size of a block on the map
-    final Handler handler=new Handler();
+    final Handler handler = new Handler();
 
     public DrawingView(Context context) {
         super(context);
@@ -25,10 +25,12 @@ public class DrawingView extends SurfaceView implements Runnable, SurfaceHolder.
         paint = new Paint();
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         screenWidth = metrics.widthPixels;
-        blockSize = screenWidth/13;
+        blockSize = screenWidth/15;
+        blockSize = (blockSize / 5) * 5;
 
 
     }
+
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
     }
@@ -40,13 +42,14 @@ public class DrawingView extends SurfaceView implements Runnable, SurfaceHolder.
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
     }
+
     @Override
     public void run() {
         while (Draw) {
+            Canvas canvas = holder.lockCanvas();
             if (!holder.getSurface().isValid()) {
                 continue;
             }
-            Canvas canvas = holder.lockCanvas();
             if (canvas != null) {
                 canvas.drawColor(Color.BLACK);
                 drawMap(canvas);
@@ -54,27 +57,28 @@ public class DrawingView extends SurfaceView implements Runnable, SurfaceHolder.
             }
         }
     }
+
     public void drawMap(Canvas canvas) {
         paint.setColor(Color.YELLOW);
-        paint.setStrokeWidth(1.5f);
+        paint.setStrokeWidth(2.5f);
         int x;
         int y;
         for (int i = 0; i < 17; i++) {
             for (int j = 0; j < 16; j++) {
                 x = j * blockSize;
                 y = i * blockSize;
-                if ((leveldata1[i][j] & 1) != 0) // draws left
-                    canvas.drawLine(x, y, x, y + blockSize +1, paint);
+                if ((leveldata[i][j] & 1) != 0) // draws left
+                    canvas.drawLine(x, y, x, y + blockSize + 1, paint);
 
-                if ((leveldata1[i][j] & 2) != 0) // draws top
+                if ((leveldata[i][j] & 2) != 0) // draws top
                     canvas.drawLine(x, y, x + blockSize - 1, y, paint);
 
-                if ((leveldata1[i][j] & 4) != 0) // draws right
+                if ((leveldata[i][j] & 4) != 0) // draws right
                     canvas.drawLine(
                             x + blockSize, y, x + blockSize, y + blockSize - 1, paint);
-                if ((leveldata1[i][j] & 8) != 0) // draws bottom
+                if ((leveldata[i][j] & 8) != 0) // draws bottom
                     canvas.drawLine(
-                            x, y + blockSize, x + blockSize + 1, y + blockSize , paint);
+                            x, y + blockSize, x + blockSize + 1, y + blockSize, paint);
             }
         }
 
@@ -95,24 +99,25 @@ public class DrawingView extends SurfaceView implements Runnable, SurfaceHolder.
         }
         Draw = true;
     }
-    final short leveldata1[][] = new short[][]{
+
+    final short leveldata[][] = new short[][]{
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {19, 26, 26, 18, 26, 26, 26, 26, 0, 19, 26, 26, 26, 18, 26, 26, 22},
-            {21, 0, 0, 21, 0, 0, 0, 21, 0, 21, 0, 0, 0, 21, 0, 0, 21},
-            {17, 26, 26, 16, 26, 18, 26, 24, 26, 24, 26, 18, 26, 16, 26, 26, 20},
-            {25, 26, 26, 20, 0, 25, 26, 22, 0, 19, 26, 28, 0, 17, 26, 26, 28},
-            {0, 0, 0, 21, 0, 0, 0, 21, 0, 21, 0, 0, 0, 21, 0, 0, 0},
-            {0, 0, 0, 21, 0, 19, 26, 24, 26, 24, 26, 22, 0, 21, 0, 0, 0},
-            {26, 26, 26, 16, 26, 20, 0, 0, 0, 0, 0, 17, 26, 16, 26, 26, 26},
-            {0, 0, 0, 21, 0, 17, 26, 26, 26, 26, 26, 20, 0, 21, 0, 0, 0},
-            {0, 0, 0, 21, 0, 21, 0, 0, 0, 0, 0, 21, 0, 21, 0, 0, 0},
-            {19, 26, 26, 16, 26, 24, 26, 22, 0, 19, 26, 24, 26, 16, 26, 26, 22},
-            {21, 0, 0, 21, 0, 0, 0, 21, 0, 21, 0, 0, 0, 21, 0, 0, 21},
-            {25, 22, 0, 21, 0, 0, 0, 17, 2, 20, 0, 0, 0, 21, 0, 19, 28},
-            {0, 21, 0, 17, 26, 26, 18, 24, 24, 24, 18, 26, 26, 20, 0, 21, 0},
-            {19, 24, 26, 28, 0, 0, 25, 18, 26, 18, 28, 0, 0, 25, 26, 24, 22},
-            {21, 0, 0, 0, 0, 0, 0, 21, 0, 21, 0, 0, 0, 0, 0, 0, 21},
-            {26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 28},
+            {3, 10, 10, 2, 10, 10, 10, 6, 0,3, 10,10,10,2,10,10, 6},
+            {5, 0, 0, 5, 0, 0, 0, 5, 0, 5, 0, 0, 0, 5, 0, 0, 5},
+            {1,10,26, 0,10,2,10, 8,10, 8,10,2,10, 0,26,10, 4},
+            {9,10,10, 4, 0, 9,10, 6, 0,3,10, 12, 0, 1,10,10, 12},
+            {0, 0, 0, 5, 0, 0, 0, 5, 0, 5, 0, 0, 0, 5, 0, 0, 0},
+            {0, 0, 0, 5, 0,3,26, 8,10, 8,26, 6, 0, 5, 0, 0, 0},
+            {10,10,10, 26,10, 4, 0, 0, 0, 0, 0, 1,10, 26,10,10,10},
+            {0, 0, 0, 5, 0, 1,26,10,10,10,26, 4, 0, 5, 0, 0, 0},
+            {0, 0, 0, 5, 0, 5, 0, 0, 0, 0, 0, 5, 0, 5, 0, 0, 0},
+            {3,10,10, 0,10, 8,10, 6, 0,3,10, 8,10, 0,10,10, 6},
+            {5, 0, 0, 5, 0, 0, 0, 5, 0, 5, 0, 0, 0, 5, 0, 0, 5},
+            {9, 6, 0, 5, 0, 0, 0, 1, 2, 4, 0, 0, 0, 5, 0,3, 12},
+            {0, 5, 0, 1,10,10,2, 8, 8, 8,2,10,10, 4, 0, 5, 0},
+            {3, 8,26, 12, 0, 0, 9,2,10,2, 12, 0, 0, 9, 26, 8, 6},
+            {5, 0, 0, 0, 0, 0, 0, 5, 0, 5, 0, 0, 0, 0, 0, 0, 5},
+            {9,10,10,10,10,10,10, 8,10, 8,10,10,10,10,10,10, 12},
     };
 }
