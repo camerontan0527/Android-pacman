@@ -13,10 +13,10 @@ public class BitmapImages {
     public BitmapImages(int blocksize, Context context){
         spriteSize = blocksize;
         arrowSize = blocksize * 3;
-        pacmanUp = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.pacmanUp), spriteSize, spriteSize, false);
-        pacmanDown = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.pacmanDown), spriteSize, spriteSize, false);
-        pacmanLeft = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.pacmanLeft), spriteSize, spriteSize, false);
-        pacmanRight = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.pacmanRight), spriteSize, spriteSize, false);
+        pacmanUp = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.pacman_up), spriteSize, spriteSize, false);
+        pacmanDown = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.pacman_down), spriteSize, spriteSize, false);
+        pacmanLeft = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.pacman_left), spriteSize, spriteSize, false);
+        pacmanRight = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.pacman_right), spriteSize, spriteSize, false);
         arrowUp = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.up_white), arrowSize, arrowSize, false);
         arrowDown = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.down_white), arrowSize, arrowSize, false);
         arrowLeft = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.left_white), arrowSize, arrowSize, false);
