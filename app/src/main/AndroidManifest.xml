@@ -20,7 +20,8 @@
         <activity android:name=".LevelActivity" />
         <activity android:name=".AboutAcitivity" />
         <activity android:name=".Easymode" />
-        <activity android:name=".Hardmode"></activity>
+        <activity android:name=".Hardmode" />
+        <activity android:name=".Setting"></activity>
     </application>
 
 </manifest>
