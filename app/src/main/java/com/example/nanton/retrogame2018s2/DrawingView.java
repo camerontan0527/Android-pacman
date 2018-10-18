@@ -6,10 +6,12 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Handler;
 import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 
-public class DrawingView extends SurfaceView implements Runnable, SurfaceHolder.Callback {
+public class DrawingView extends SurfaceView implements Runnable, SurfaceHolder.Callback, View.OnTouchListener {
     private Thread thread;
     private SurfaceHolder holder;
     private boolean Draw = true;
@@ -18,6 +20,11 @@ public class DrawingView extends SurfaceView implements Runnable, SurfaceHolder.
     private int blockSize;
     private int level;
     final Handler handler = new Handler();
+    private BitmapImages bitmap;
+    private short[][] currentMap;
+    private Movement movement;
+    private Pacman pacman;
+    private float x1, y1, x2, y2;
 
     public DrawingView(Context context) {
         super(context);
@@ -29,8 +36,11 @@ public class DrawingView extends SurfaceView implements Runnable, SurfaceHolder.
         screenWidth = metrics.widthPixels;
         blockSize = screenWidth / 15;
         blockSize = (blockSize / 5) * 5;
-
-
+        bitmap = new BitmapImages(blockSize, context);
+        currentMap = getMap(level);
+        movement = new Movement(currentMap, blockSize);
+        pacman = movement.getPacman();
+        this.setOnTouchListener(this);
     }
 
     @Override
@@ -55,6 +65,7 @@ public class DrawingView extends SurfaceView implements Runnable, SurfaceHolder.
             if (canvas != null) {
                 canvas.drawColor(Color.BLACK);
                 drawMap(canvas);
+                pacman.drawPacman(bitmap, canvas, movement, paint, getContext());
                 holder.unlockCanvasAndPost(canvas);
             }
         }
@@ -186,4 +197,36 @@ public class DrawingView extends SurfaceView implements Runnable, SurfaceHolder.
     }
 
 
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        switch (motionEvent.getAction()){
+            case (MotionEvent.ACTION_DOWN):{
+                x1 = motionEvent.getX();
+                y1 = motionEvent.getY();
+                break;
+            }
+            case (MotionEvent.ACTION_UP):{
+                x2 = motionEvent.getX();
+                y2 = motionEvent.getY();
+                getTouchDirection();
+                break;
+            }
+        }
+        return true;
+    }
+
+    public void getTouchDirection(){
+        if (Math.abs(x2 - x1) > Math.abs(y2 - y1)){
+            if (x2 - x1 < 0)
+                pacman.setNextDir(3);
+            else
+                pacman.setNextDir(1);
+        }
+        else {
+            if (y2 - y1 < 0)
+                pacman.setNextDir(0);
+            else
+                pacman.setNextDir(2);
+        }
+    }
 }
