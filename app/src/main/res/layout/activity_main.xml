@@ -13,7 +13,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/button"
         android:layout_width="47dp"
         android:layout_height="37dp"
         android:layout_alignParentEnd="true"
