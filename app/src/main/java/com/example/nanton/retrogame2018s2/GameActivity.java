@@ -22,7 +22,7 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    int numOfLines = 28; // modify number
+    int numOfLines = 26; // modify number
     int height = 50; // modify number
     int width = 300; // modify number
     static private int[] xs = {0,
@@ -50,9 +50,8 @@ public class GameActivity extends AppCompatActivity {
             350,
             0,
             300,
-            600,
-            350,
-            700
+            600
+
 
 
 
@@ -82,8 +81,6 @@ public class GameActivity extends AppCompatActivity {
             50,
             900,
             900,
-            900,
-            200,
             900
 
 
@@ -114,9 +111,7 @@ public class GameActivity extends AppCompatActivity {
             90,
             0,
             0,
-            0,
-            90,
-            90
+            0
 
 
 
