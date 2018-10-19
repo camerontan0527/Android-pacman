@@ -1,4 +1,7 @@
 package com.example.nanton.retrogame2018s2;
+/*Author :Weinan Zhang&MenG Yuan& Renhao Tan
+UniID:U5687862  U6302766,U6211458
+ */
 
 import android.content.DialogInterface;
 import android.graphics.Color;
@@ -14,7 +17,8 @@ import android.widget.TextView;
 import java.util.HashMap;
 
 public class GameActivity extends AppCompatActivity {
-    public enum Direction{ UP,DOWN,RIGHT,LEFT}
+    public enum Direction {UP, DOWN, RIGHT, LEFT}
+
     Direction monsDirect = Direction.DOWN;
     Direction pacDirect = null;
 
@@ -27,8 +31,8 @@ public class GameActivity extends AppCompatActivity {
     ImageView monster;
     int monsX = 13, monsY = 4;
     ImageView pacman;
-    int pacX = Value.dividedSize-2, pacY = Value.dividedSize-2;
-    HashMap<String,TextView> coins = new HashMap<>();
+    int pacX = Value.dividedSize - 2, pacY = Value.dividedSize - 2;
+    HashMap<String, TextView> coins = new HashMap<>();
 
     Handler handler = new Handler();
 
@@ -52,20 +56,22 @@ public class GameActivity extends AppCompatActivity {
             handler.postDelayed(myRunnable, 200);
         }
     };
-    private void checkFinalConditions(){
 
-        if(coins.isEmpty()){
-            String message = "\nWell down!\n\nScore: "+scoreValue+"\n";
+    private void checkFinalConditions() {
+
+        if (coins.isEmpty()) {
+            String message = "\nWell down!\n\nScore: " + scoreValue + "\n";
             endGameMessage(message);
-        }else if(pacX==monsX&&pacY==monsY){
-            String message = "\nLuck next time!\n\nScore: "+scoreValue+"\n";
+        } else if (pacX == monsX && pacY == monsY) {
+            String message = "\nLuck next time!\n\nScore: " + scoreValue + "\n";
             endGameMessage(message);
         }
     }
-    private void endGameMessage(String message){
+
+    private void endGameMessage(String message) {
         new AlertDialog.Builder(this).setTitle("End Game")
                 .setMessage(message)
-                .setPositiveButton("back",new DialogInterface.OnClickListener() {
+                .setPositiveButton("back", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         finish();
@@ -73,142 +79,152 @@ public class GameActivity extends AppCompatActivity {
                 })
                 .show();
     }
-    private void updateUI(){
+
+    private void updateUI() {
         moveMonster();
         movePacman();
     }
-    private void movePacman(){
-        if(pacDirect == null){
+
+    private void movePacman() {
+        if (pacDirect == null) {
             return;
-        }else if(pacDirect == Direction.RIGHT){
-            if(myMap[pacX+1][pacY] == -1){
+        } else if (pacDirect == Direction.RIGHT) {
+            if (myMap[pacX + 1][pacY] == -1) {
                 return;
-            }else{
+            } else {
                 pacX++;
-                pacman.setX(pacX*blockSize);pacman.setY(pacY*blockSize);
-                if(myMap[pacX][pacY] == 1){
+                pacman.setX(pacX * blockSize);
+                pacman.setY(pacY * blockSize);
+                if (myMap[pacX][pacY] == 1) {
                     myMap[pacX][pacY] = 0;
-                    ly.removeView(coins.get(""+pacX+" "+pacY));
-                    coins.remove(""+pacX+" "+pacY);
+                    ly.removeView(coins.get("" + pacX + " " + pacY));
+                    coins.remove("" + pacX + " " + pacY);
                     scoreValue = scoreValue + 10;
                 }
-                score.setText(""+scoreValue);
+                score.setText("" + scoreValue);
             }
-        }else if(pacDirect == Direction.LEFT){
-            if(myMap[pacX-1][pacY] == -1){
+        } else if (pacDirect == Direction.LEFT) {
+            if (myMap[pacX - 1][pacY] == -1) {
                 return;
-            }else{
+            } else {
                 pacX--;
-                pacman.setX(pacX*blockSize);pacman.setY(pacY*blockSize);
-                if(myMap[pacX][pacY] == 1){
+                pacman.setX(pacX * blockSize);
+                pacman.setY(pacY * blockSize);
+                if (myMap[pacX][pacY] == 1) {
                     myMap[pacX][pacY] = 0;
-                    ly.removeView(coins.get(""+pacX+" "+pacY));
-                    coins.remove(""+pacX+" "+pacY);
+                    ly.removeView(coins.get("" + pacX + " " + pacY));
+                    coins.remove("" + pacX + " " + pacY);
                     scoreValue = scoreValue + 10;
                 }
-                score.setText(""+scoreValue);
+                score.setText("" + scoreValue);
             }
-        }else if(pacDirect == Direction.UP){
-            if(myMap[pacX][pacY-1] == -1){
+        } else if (pacDirect == Direction.UP) {
+            if (myMap[pacX][pacY - 1] == -1) {
                 return;
-            }else{
+            } else {
                 pacY--;
-                pacman.setX(pacX*blockSize);pacman.setY(pacY*blockSize);
-                if(myMap[pacX][pacY] == 1){
+                pacman.setX(pacX * blockSize);
+                pacman.setY(pacY * blockSize);
+                if (myMap[pacX][pacY] == 1) {
                     myMap[pacX][pacY] = 0;
-                    ly.removeView(coins.get(""+pacX+" "+pacY));
-                    coins.remove(""+pacX+" "+pacY);
+                    ly.removeView(coins.get("" + pacX + " " + pacY));
+                    coins.remove("" + pacX + " " + pacY);
                     scoreValue = scoreValue + 10;
                 }
-                score.setText(""+scoreValue);
+                score.setText("" + scoreValue);
             }
-        }else if(pacDirect == Direction.DOWN){
-            if(myMap[pacX][pacY+1] == -1){
+        } else if (pacDirect == Direction.DOWN) {
+            if (myMap[pacX][pacY + 1] == -1) {
                 return;
-            }else{
+            } else {
                 pacY++;
-                pacman.setX(pacX*blockSize);pacman.setY(pacY*blockSize);
-                if(myMap[pacX][pacY] == 1){
+                pacman.setX(pacX * blockSize);
+                pacman.setY(pacY * blockSize);
+                if (myMap[pacX][pacY] == 1) {
                     myMap[pacX][pacY] = 0;
-                    ly.removeView(coins.get(""+pacX+" "+pacY));
-                    coins.remove(""+pacX+" "+pacY);
+                    ly.removeView(coins.get("" + pacX + " " + pacY));
+                    coins.remove("" + pacX + " " + pacY);
                     scoreValue = scoreValue + 10;
                 }
-                score.setText(""+scoreValue);
+                score.setText("" + scoreValue);
             }
         }
     }
-    private void moveMonster(){
-        if(monsDirect==Direction.DOWN){
-            if(myMap[monsX][monsY+1] == -1){
+
+    private void moveMonster() {
+        if (monsDirect == Direction.DOWN) {
+            if (myMap[monsX][monsY + 1] == -1) {
                 monsDirect = Direction.UP;
                 monsY = monsY - 1;
-            }else{
+            } else {
                 monsY = monsY + 1;
             }
-        }else if(monsDirect==Direction.UP){
-            if(myMap[monsX][monsY-1] == -1){
+        } else if (monsDirect == Direction.UP) {
+            if (myMap[monsX][monsY - 1] == -1) {
                 monsDirect = Direction.DOWN;
                 monsY = monsY + 1;
-            }else{
+            } else {
                 monsY = monsY - 1;
             }
         }
-        monster.setX(blockSize*monsX);
-        monster.setY(blockSize*monsY);
+        monster.setX(blockSize * monsX);
+        monster.setY(blockSize * monsY);
     }
 
 
-    private void newMap(){
+    private void newMap() {
         myMap = Value.map.clone();
-        blockSize = Value.screenWidth/Value.dividedSize;
+        blockSize = Value.screenWidth / Value.dividedSize;
 
         // add wall and coins
-        for(int i = 0; i < Value.dividedSize; i++){
-            for(int j = 0; j < Value.dividedSize; j++){
-                if(myMap[i][j] == -1){ // add wall
+        for (int i = 0; i < Value.dividedSize; i++) {
+            for (int j = 0; j < Value.dividedSize; j++) {
+                if (myMap[i][j] == -1) { // add wall
                     TextView tv = new TextView(this);
                     tv.setBackgroundColor(Color.WHITE);
                     tv.setHeight(blockSize);
                     tv.setWidth(blockSize);
-                    tv.setX(blockSize*i);
-                    tv.setY(blockSize*j);
+                    tv.setX(blockSize * i);
+                    tv.setY(blockSize * j);
                     ly.addView(tv);
-                }else if(myMap[i][j] == 1){ // add coins
+                } else if (myMap[i][j] == 1) { // add coins
                     TextView tv = new TextView(this);
                     tv.setBackgroundColor(Color.WHITE);
                     tv.setHeight(10);
                     tv.setWidth(10);
-                    tv.setX(blockSize*i + blockSize / 2 - 5);
-                    tv.setY(blockSize*j + blockSize / 2 - 5);
-                    coins.put(""+i+" "+j,tv);
+                    tv.setX(blockSize * i + blockSize / 2 - 5);
+                    tv.setY(blockSize * j + blockSize / 2 - 5);
+                    coins.put("" + i + " " + j, tv);
                     ly.addView(tv);
                 }
             }
         }
 
         // add monster
-        monster.setX(blockSize*monsX);
-        monster.setY(blockSize*monsY);
+        monster.setX(blockSize * monsX);
+        monster.setY(blockSize * monsY);
 
         // add pacman
-        pacman.setX(blockSize*pacX);
-        pacman.setY(blockSize*pacY);
+        pacman.setX(blockSize * pacX);
+        pacman.setY(blockSize * pacY);
 
         // set score
-        score.setText(""+scoreValue);
+        score.setText("" + scoreValue);
     }
 
-    public void clickLeft(View v){
+    public void clickLeft(View v) {
         pacDirect = Direction.LEFT;
     }
-    public void clickRight(View v){
+
+    public void clickRight(View v) {
         pacDirect = Direction.RIGHT;
     }
-    public void clickUp(View v){
+
+    public void clickUp(View v) {
         pacDirect = Direction.UP;
     }
-    public void clickDown(View v){
+
+    public void clickDown(View v) {
         pacDirect = Direction.DOWN;
     }
 }

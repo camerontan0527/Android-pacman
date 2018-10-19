@@ -1,4 +1,7 @@
 package com.example.nanton.retrogame2018s2;
+/*Author :Weinan Zhang
+UniID:U5687862
+ */
 
 import android.content.Intent;
 import android.media.MediaPlayer;
