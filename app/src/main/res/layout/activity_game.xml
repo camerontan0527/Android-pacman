@@ -8,14 +8,20 @@
     android:background="@drawable/gamebackground"
     tools:context="com.example.nanton.retrogame2018s2.GameActivity">
     <android.support.constraint.ConstraintLayout
-        android:layout_weight="1"
         android:id="@+id/myLayout"
+        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
+        <ImageView
+            android:id="@+id/monster"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/monster1" />
     </android.support.constraint.ConstraintLayout>
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/myLayout2"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="100dp">
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>
