@@ -18,7 +18,59 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:background="@drawable/monster1" />
+        <ImageView
+            android:id="@+id/pacman"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/pacman_left" />
     </android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp">
+            <TextView
+                android:text="Score:"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:layout_width="70dp"
+                android:layout_height="50dp" />
+            <TextView
+                android:id="@+id/score"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:layout_width="70dp"
+                android:layout_height="50dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp">
+            <ImageButton
+                android:background="@drawable/left"
+                android:onClick="clickLeft"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+            <ImageButton
+                android:background="@drawable/up"
+                android:onClick="clickUp"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+            <ImageButton
+                android:background="@drawable/down"
+                android:onClick="clickDown"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+            <ImageButton
+                android:background="@drawable/right"
+                android:onClick="clickRight"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+        </LinearLayout>
+    </LinearLayout>
     <android.support.constraint.ConstraintLayout
         android:id="@+id/myLayout2"
         android:layout_width="match_parent"
