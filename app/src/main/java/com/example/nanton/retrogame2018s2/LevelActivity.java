@@ -13,11 +13,11 @@ public class LevelActivity extends AppCompatActivity {
         setContentView(R.layout.activity_level);
     }
     public void EasyMode(View view){
-        Intent EM = new Intent(this, Easymode.class);
+        Intent EM = new Intent(this, GameActivity.class);
         startActivity(EM);
     }
     public void HardMode(View view){
-        Intent HM = new Intent(this, Hardmode.class);
+        Intent HM = new Intent(this, GameActivity.class);
         startActivity(HM);
     }
 }

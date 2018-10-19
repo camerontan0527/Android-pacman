@@ -1,8 +1,10 @@
 package com.example.nanton.retrogame2018s2;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Handler;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -46,9 +48,31 @@ public class GameActivity extends AppCompatActivity {
         @Override
         public void run() {
             updateUI();
+            checkFinalConditions();
             handler.postDelayed(myRunnable, 200);
         }
     };
+    private void checkFinalConditions(){
+
+        if(coins.isEmpty()){
+            String message = "\nWell down!\n\nScore: "+scoreValue+"\n";
+            endGameMessage(message);
+        }else if(pacX==monsX&&pacY==monsY){
+            String message = "\nLuck next time!\n\nScore: "+scoreValue+"\n";
+            endGameMessage(message);
+        }
+    }
+    private void endGameMessage(String message){
+        new AlertDialog.Builder(this).setTitle("End Game")
+                .setMessage(message)
+                .setPositiveButton("back",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                })
+                .show();
+    }
     private void updateUI(){
         moveMonster();
         movePacman();
